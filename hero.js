@@ -5,9 +5,9 @@
   const hero = box.parentElement;
   const list = v => (v || '').split(',').map(s => s.trim()).filter(Boolean);
   const full = list(box.dataset.images);
-  // بنرهایی که در data-desktop-only آمده‌اند روی صفحه‌ی عمودی نشان داده نمی‌شوند
-  const desktopOnly = matchMedia('(max-aspect-ratio:1/1)').matches ? list(box.dataset.desktopOnly) : [];
-  const images = [...full, ...list(box.dataset.banners).filter(src => !desktopOnly.includes(src))];
+  // روی صفحه‌ی عمودی نسخه‌ی عمودی بنرها می‌آید
+  const vertical = matchMedia('(max-aspect-ratio:1/1)').matches ? list(box.dataset.bannersMobile) : [];
+  const images = [...full, ...(vertical.length ? vertical : list(box.dataset.banners))];
   const isBanner = i => i >= full.length;
   const DELAY = 4500, MOVE = 700;
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -50,6 +50,7 @@
       d.classList.toggle('is-on', i === cur);
       d.setAttribute('aria-current', i === cur);
     });
+    hero.classList.toggle('on-banner', isBanner(cur));
   };
   // بنر بین نوار بالا و نوار پایین جا می‌گیرد
   const fit = () => box.style.setProperty('--hero-bottom', `${hero.clientHeight - strip.offsetTop + 8}px`);

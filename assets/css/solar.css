@@ -384,7 +384,8 @@ button.hero-arrow:hover{background:var(--primary)}
 }
 @media screen and (max-width:350px){.brand span{display:none}}
 
-/* روی صفحه‌ی عمودی، بنر افقی کامل دیده می‌شود و نسخه‌ی محو خودش پشتش می‌نشیند */
+/* روی صفحه‌ی عمودی، پوسترهای عمودی متن خودشان را دارند */
 @media (max-aspect-ratio:1/1){
-  .hero-slide.is-banner .hero-fg{inset:auto;top:calc(var(--head-h) + 8px);left:0;width:100%;height:calc(100% - var(--head-h) - 8px - var(--hero-bottom,170px));object-fit:contain}
+  .on-banner .hero__body{opacity:0;visibility:hidden}
+  .on-banner .hero-slides::after{opacity:0}
 }
