@@ -5,7 +5,9 @@
   const hero = box.parentElement;
   const list = v => (v || '').split(',').map(s => s.trim()).filter(Boolean);
   const full = list(box.dataset.images);
-  const images = [...full, ...list(box.dataset.banners)];
+  // بنرهایی که در data-desktop-only آمده‌اند روی صفحه‌ی عمودی نشان داده نمی‌شوند
+  const desktopOnly = matchMedia('(max-aspect-ratio:1/1)').matches ? list(box.dataset.desktopOnly) : [];
+  const images = [...full, ...list(box.dataset.banners).filter(src => !desktopOnly.includes(src))];
   const isBanner = i => i >= full.length;
   const DELAY = 4500, MOVE = 700;
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
