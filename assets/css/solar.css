@@ -386,3 +386,8 @@ button.hero-arrow:hover{background:var(--primary)}
   .brand span{font-size:.95rem}
 }
 @media screen and (max-width:350px){.brand span{display:none}}
+
+/* روی صفحه‌ی عمودی، بنر افقی کامل دیده می‌شود و نسخه‌ی محو خودش پشتش می‌نشیند */
+@media (max-aspect-ratio:1/1){
+  .hero-slide.is-banner .hero-fg{inset:auto;top:calc(var(--head-h) + 8px);left:0;width:100%;height:calc(100% - var(--head-h) - 8px - var(--hero-bottom,170px));object-fit:contain}
+}
