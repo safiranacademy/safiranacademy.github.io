@@ -337,7 +337,7 @@ button.quiz__skip{background:none}
 .hero-dots i{position:absolute;inset:auto 0 0;height:4px;background:rgba(255,255,255,.3);opacity:0}
 .hero-dots i::after{content:"";position:absolute;inset:0;background:var(--primary);transform:scaleX(0);transform-origin:right}
 .hero-dots .is-on i{opacity:1}
-.hero-dots .is-on i::after{animation:heroBar 6s linear forwards}
+.hero-dots .is-on i::after{animation:heroBar 4.5s linear forwards}
 @keyframes heroBar{to{transform:scaleX(1)}}
 .hero-arrows{display:flex;gap:8px;margin-inline-start:auto;flex:none}
 button.hero-arrow{width:44px;min-height:44px;padding:0;border-radius:50%;background:rgba(11,17,9,.42);box-shadow:inset 0 0 0 1px rgba(255,255,255,.34);color:#fff;font-size:14px}
