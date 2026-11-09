@@ -6,7 +6,9 @@
   const list = v => (v || '').split(',').map(s => s.trim()).filter(Boolean);
   const full = list(box.dataset.images);
   // روی صفحه‌ی عمودی نسخه‌ی عمودی بنرها می‌آید
-  const vertical = matchMedia('(max-aspect-ratio:1/1)').matches ? list(box.dataset.bannersMobile) : [];
+  const portrait = matchMedia('(max-aspect-ratio:1/1)');
+  const vertical = portrait.matches ? list(box.dataset.bannersMobile) : [];
+  portrait.addEventListener('change', () => location.reload());
   const images = [...full, ...(vertical.length ? vertical : list(box.dataset.banners))];
   const isBanner = i => i >= full.length;
   const DELAY = 4500, MOVE = 700;
