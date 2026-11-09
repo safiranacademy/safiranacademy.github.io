@@ -50,7 +50,6 @@
       d.classList.toggle('is-on', i === cur);
       d.setAttribute('aria-current', i === cur);
     });
-    hero.classList.toggle('on-banner', isBanner(cur));
   };
   // بنر بین نوار بالا و نوار پایین جا می‌گیرد
   const fit = () => box.style.setProperty('--hero-bottom', `${hero.clientHeight - strip.offsetTop + 8}px`);
