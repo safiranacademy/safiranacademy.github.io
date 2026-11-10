@@ -275,13 +275,31 @@
     phase = 'aim';
     status('نوبت تو: بکش و رها کن');
     document.body.classList.add('is-battling');
-    stage.scrollIntoView({ block: 'start', behavior: calm ? 'auto' : 'smooth' });
+    enterFull();
+    if (!document.body.classList.contains('is-battle-full')) stage.scrollIntoView({ block: 'start', behavior: calm ? 'auto' : 'smooth' });
     running = true;
     last = performance.now();
     requestAnimationFrame(frame);
   }
 
   new ResizeObserver(resize).observe(stage);
+  // روی گوشی، بازی کل صفحه را می‌گیرد و اگر مرورگر اجازه بدهد افقی و تمام‌صفحه می‌شود
+  const phone = matchMedia('(pointer: coarse), (max-width: 900px)');
+  function enterFull() {
+    if (!phone.matches || document.body.classList.contains('is-battle-full')) return;
+    document.body.classList.add('is-battle-full');
+    const root = document.documentElement;
+    (root.requestFullscreen ? root.requestFullscreen({ navigationUI: 'hide' }) : Promise.reject())
+      .then(() => screen.orientation?.lock?.('landscape'))
+      .catch(() => {});
+  }
+  function exitFull() {
+    document.body.classList.remove('is-battle-full');
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    try { screen.orientation?.unlock?.(); } catch {}
+  }
+  $('battle-exit').addEventListener('click', exitFull);
+
   $('battle-again').addEventListener('click', start);
   $('battle-play').addEventListener('click', start);
 

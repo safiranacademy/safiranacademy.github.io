@@ -39,3 +39,13 @@
   .battle{width:calc(100% - 2rem)}
   .battle__rotate{display:flex}
 }
+
+/* تمام‌صفحه روی گوشی */
+.battle__exit{display:none}
+body.is-battle-full{overflow:hidden}
+body.is-battle-full::before{content:"";position:fixed;inset:0;z-index:9700;background:#0b1109 url(../../img/game/battle-bg.webp) center/cover}
+body.is-battle-full .battle{position:fixed;inset:0;z-index:9701;width:min(100vw,100dvh * 16 / 9);height:min(100dvh,100vw * 9 / 16);margin:auto;border-radius:0}
+body.is-battle-full .battle__rotate{position:fixed;z-index:9702}
+body.is-battle-full .float-call,body.is-battle-full .support{display:none}
+body.is-battle-full button.battle__exit{display:grid;place-items:center;position:absolute;bottom:8px;left:8px;z-index:5;width:42px;min-height:42px;padding:0;border-radius:50%;background:#0009;color:#fff;font-size:18px;box-shadow:inset 0 0 0 1px #fff6}
+
