@@ -11,9 +11,38 @@
   // همه‌ی اندازه‌ها در یک صحنه‌ی ثابت ۱۶۰۰ در ۹۰۰ حساب می‌شوند
   const W = 1600, H = 900, GRAVITY = 900;
   const SPRITE_H = 330, SPRITE_W = SPRITE_H * 540 / 620, FOOT = 714, FLOOR = 850;
-  const HIT_RADIUS = 125, DEVIL_HIT_CHANCE = 0.25;
-  const DAMAGE_TO_DEVIL = 25, DAMAGE_TO_ANGEL = 15;
   const MAX_DRAG = 380, MIN_DRAG = 30, MAX_PARTICLES = 36;
+
+  // آسیب به جای خوردن تیر بستگی دارد: سر بیشتر، بدن کمتر، پا از همه کمتر
+  const TOP = FOOT - SPRITE_H, HALF_W = SPRITE_W * .36;
+  const ZONES = [
+    { name: 'head', until: TOP + SPRITE_H * .3, damage: 34, label: 'ضربه به سر!' },
+    { name: 'body', until: TOP + SPRITE_H * .7, damage: 20, label: 'ضربه به بدن' },
+    { name: 'legs', until: FOOT, damage: 9, label: 'ضربه به پا' },
+  ];
+  const zoneAt = (f, x, y) => Math.abs(x - f.x) < HALF_W && y > TOP + 12 ? ZONES.find(z => y <= z.until) || null : null;
+
+  // ۵۰۰ الگوی ثابت برای تیر شیطان که در یک حلقه پشت سر هم می‌آیند؛ هر بازدیدکننده از جای تصادفی حلقه شروع می‌کند
+  const PATTERNS = (() => {
+    let s = 1405;
+    const next = () => {
+      s = (s + 0x6D2B79F5) | 0;
+      let t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    return Array.from({ length: 500 }, () => {
+      const z = next();
+      return { roll: next(), zone: z < .2 ? 'head' : z < .7 ? 'body' : 'legs', jitter: next() * 2 - 1, side: next() < .5 ? -1 : 1, spread: next() };
+    });
+  })();
+  const AIM_Y = { head: 440, body: 550, legs: 668 };
+  const ANGLE = { head: [.9, 1.05], body: [.72, .86], legs: [.5, .62] };
+  let cycle = Math.floor(Math.random() * PATTERNS.length);
+  try {
+    const saved = Number(localStorage.getItem('battle-cycle'));
+    if (localStorage.getItem('battle-cycle') !== null && Number.isInteger(saved) && saved >= 0 && saved < PATTERNS.length) cycle = saved;
+  } catch {}
 
   const fighters = {
     angel: { x: 1330, muzzleX: 1211, muzzleY: 555, life: 100, shake: 0, bar: $('battle-angel'), img: new Image() },
@@ -98,9 +127,18 @@
   }
 
   function devilShoot() {
-    const f = fighters.devil, hit = Math.random() < DEVIL_HIT_CHANCE;
-    const offset = hit ? rand(-45, 45) : (Math.random() < .5 ? -1 : 1) * rand(260, 420);
-    const dx = fighters.angel.x + offset - f.muzzleX, up = f.muzzleY - BODY_Y, angle = rand(.87, 1.08);
+    const p = PATTERNS[cycle];
+    cycle = (cycle + 1) % PATTERNS.length;
+    try { localStorage.setItem('battle-cycle', cycle); } catch {}
+    // هرچه فرشته جلوتر باشد شیطان دقیق‌تر می‌زند، تا بازی یک‌طرفه نشود و گاهی برد و گاهی باخت پیش بیاید
+    const f = fighters.devil, a = fighters.angel;
+    const hit = p.roll < Math.min(.62, Math.max(.25, .34 + (a.life - f.life) / 260));
+    // تیر درست از لبه‌ی بدن و در ارتفاع همان ناحیه می‌خورد؛ تیر خطا یا کوتاه می‌افتد یا از بالای سر رد می‌شود
+    const aimY = hit ? AIM_Y[p.zone] + p.jitter * 22 : p.side < 0 ? BODY_Y : TOP - 140;
+    const tx = hit ? a.x - HALF_W + 4 : a.x + p.side * (260 + p.spread * 160);
+    const [lo, hi] = hit ? ANGLE[p.zone] : [.87, 1.08];
+    const angle = lo + p.spread * (hi - lo);
+    const dx = tx - f.muzzleX, up = f.muzzleY - aimY;
     const speed = Math.sqrt(GRAVITY * dx * dx / (2 * Math.cos(angle) ** 2 * (dx * Math.tan(angle) - up)));
     fire('devil', { vx: Math.cos(angle) * speed, vy: -Math.sin(angle) * speed });
   }
@@ -136,11 +174,12 @@
 
     const name = shot.from === 'angel' ? 'devil' : 'angel';
     const target = fighters[name];
-    const after = fighters[name].life <= (shot.from === 'angel' ? DAMAGE_TO_DEVIL : DAMAGE_TO_ANGEL) ? 'over' : name;
-    if (Math.hypot(shot.x - target.x, shot.y - BODY_Y) < HIT_RADIUS) {
+    const zone = zoneAt(target, shot.x, shot.y);
+    if (zone) {
       burst(shot.x, shot.y, shot.from);
-      damage(name, shot.from === 'angel' ? DAMAGE_TO_DEVIL : DAMAGE_TO_ANGEL);
-      endShot(after);
+      damage(name, zone.damage);
+      status(`${zone.label} −${zone.damage}`);
+      endShot(target.life <= 0 ? 'over' : name);
     } else if (shot.y > FLOOR || shot.x < -200 || shot.x > W + 200) {
       if (shot.x > 0 && shot.x < W) burst(shot.x, Math.min(shot.y, FLOOR), shot.from);
       endShot(name);
