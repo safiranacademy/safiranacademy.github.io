@@ -69,7 +69,7 @@
 
       <div class="battle__panel" id="battle-start">
         <h3>آماده‌ی نبردی؟</h3>
-        <p>انگشت یا موس را روی صحنه بکش و رها کن. هرچه بیشتر بکشی، تیر دورتر می‌رود. تیر به سر بیشترین آسیب را می‌زند، به بدن کمتر و به پا از همه کمتر.</p>
+        <p>انگشت یا موس را روی صحنه بکش و رها کن. هرچه بیشتر بکشی، تیر دورتر می‌رود. تیر به سر بیشترین آسیب را می‌زند، به بدن کمتر و به پا از همه کمتر. زیر صحنه سه تیر ویژه داری که هر کدام فقط یک بار به کار می‌رود: یخی (حریف یک نوبت یخ می‌زند)، پنج‌تایی (در هوا پنج تکه می‌شود) و قدرتی (آسیب بیشتر).</p>
         <button type="button" class="button primary" id="battle-play" disabled>در حال آماده‌سازی…</button>
       </div>
 
@@ -83,6 +83,21 @@
 
       <div class="battle__rotate">گوشی را افقی کن</div>
       <button type="button" class="battle__exit" id="battle-exit" aria-label="خروج از بازی">✕</button>
+    </div>
+
+    <div class="battle-powers" id="battle-powers">
+      <div class="battle-powers__side is-angel" role="group" aria-label="تیرهای ویژه‌ی امیرعباس">
+        <span>تیرهای ویژه (هر کدام یک بار)</span>
+        <button type="button" class="battle-power" data-power="ice" aria-pressed="false" disabled>❄️ یخی</button>
+        <button type="button" class="battle-power" data-power="cluster" aria-pressed="false" disabled>💥 پنج‌تایی</button>
+        <button type="button" class="battle-power" data-power="power" aria-pressed="false" disabled>⚡ قدرتی</button>
+      </div>
+      <div class="battle-powers__side is-devil" aria-label="تیرهای ویژه‌ی شیطان">
+        <span>شیطان</span>
+        <i data-devil-power="ice" title="تیر یخی">❄️</i>
+        <i data-devil-power="cluster" title="تیر خوشه‌ای">💥</i>
+        <i data-devil-power="power" title="تیر قدرتی">⚡</i>
+      </div>
     </div>
 
   </div>
