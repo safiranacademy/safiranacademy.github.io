@@ -86,7 +86,7 @@ body.inner #main{padding-top:var(--head-h)}
 .post header.major h1,.post header.major h2{font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.3;margin:0 0 .6rem}
 .post.slim{padding-top:clamp(32px,4vw,56px)}
 .sec-head{padding-block:clamp(40px,6vw,76px) 1.6rem}
-.sec-head h2{font-size:clamp(1.9rem,4vw,3rem);margin:0 0 .3rem}
+.sec-head h1,.sec-head h2{font-size:clamp(1.9rem,4vw,3rem);margin:0 0 .3rem}
 .sec-head p{margin:0}
 .posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px}
 .posts>article{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);padding:clamp(24px,2.6vw,36px);transition:border-color .2s ease,transform .2s ease}

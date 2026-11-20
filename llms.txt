@@ -1,0 +1,17 @@
+# مؤسسه سفیران
+
+> مؤسسه سفیران با حضور دکتر جواد فروغی، قاری و مفسر قرآن کریم: کلاس‌های آموزشی قرآن، مشاوره‌ی خانواده، مشاوره‌ی فرزندان و مشاوره‌ی فردی با رویکرد قرآن‌تراپی؛ آنلاین و حضوری در مشهد.
+
+- آدرس: مشهد، احمدآباد ۲۵، شیرین ۱
+- تلفن: 0915 090 0177
+- اینستاگرام: https://www.instagram.com/dr.javadforooghi
+- یوتیوب: https://www.youtube.com/@JavadForooghi
+
+## صفحه‌ها
+
+- [معرفی](https://safiranacademy.github.io/about.html): آشنایی با دکتر جواد فروغی و مؤسسه
+- [خدمات](https://safiranacademy.github.io/services.html): مشاوره‌ها و کلاس‌ها و ثبت‌نام هر کدام
+- [ویدیوها](https://safiranacademy.github.io/videos.html): تلاوت‌ها و برنامه‌ها
+- [پادکست](https://safiranacademy.github.io/podcast.html): تلاوت و گفتارهای صوتی
+- [کتاب‌ها](https://safiranacademy.github.io/books.html): کتاب‌های الکترونیک
+- [تست علایق و شخصیت](https://safiranacademy.github.io/test.html): تست رایگان
