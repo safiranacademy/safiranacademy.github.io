@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ثبت‌نام کلاس قرآن | مؤسسه سفیران</title>
+<title>ثبت‌نام کلاس‌ها | مؤسسه سفیران</title>
 <link rel="canonical" href="https://safiranacademy.github.io/signup.html">
 <meta name="description" content="ثبت‌نام کلاس‌های آموزشی قرآن مؤسسه سفیران با دکتر جواد فروغی؛ آنلاین و حضوری.">
-<meta name="theme-color" content="#182413">
+<meta name="theme-color" content="#0f0f0f">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="مؤسسه سفیران">
-<meta property="og:title" content="ثبت‌نام کلاس قرآن | مؤسسه سفیران">
+<meta property="og:title" content="ثبت‌نام کلاس‌ها | مؤسسه سفیران">
 <meta property="og:description" content="ثبت‌نام کلاس‌های آموزشی قرآن مؤسسه سفیران با دکتر جواد فروغی؛ آنلاین و حضوری.">
 <meta property="og:image" content="https://safiranacademy.github.io/img/og-image.jpg">
 <meta property="og:url" content="https://safiranacademy.github.io/signup.html">
@@ -20,13 +20,15 @@
 <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/solar.css">
 <link rel="stylesheet" href="assets/css/support.css">
+<link rel="stylesheet" href="assets/css/elio.css">
+<link rel="stylesheet" href="assets/css/updraft-skin.css">
 </head>
 <body class="inner is-preload" data-page="signup">
 
 <div id="wrapper" class="fade-in">
 
   <header class="site-head" id="header">
-    <a class="brand" href="index.html"><img src="img/logo-safiran-light.webp" alt="" width="46" height="42"><span>مؤسسه سفیران</span></a>
+    <a class="brand" href="index.html"><img src="img/logo-safiran-light.webp" alt="" width="46" height="42"><span>سفیران</span></a>
     <nav class="site-nav" id="site-nav" aria-label="منوی اصلی">
     <ul class="site-links">
       <li><a href="index.html">خانه</a></li>
@@ -47,7 +49,8 @@
       <li><a href="tel:09150900177" class="icon solid fa-phone"><span class="label">تماس</span></a></li>
     </ul>
     </nav>
-    <a class="head-cta" href="register.html">ثبت‌نام / ورود</a>
+    <span class="head-clock" data-clock="مشهد"></span>
+    <a class="head-cta" href="tel:09150900177">تماس با ما</a>
     <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="منو"><i class="icon solid fa-bars" aria-hidden="true"></i></button>
   </header>
 
@@ -56,7 +59,7 @@
     <article class="post featured" id="signup">
       <header class="major">
         <span class="date">ثبت‌نام</span>
-        <h1>ثبت‌نام کلاس قرآن</h1>
+        <h1>ثبت‌نام کلاس‌ها</h1>
         <p>چند سؤال کوتاه درباره‌ی علایق، توانایی‌ها و هدف شما، تا کلاس مناسب را پیشنهاد کنیم و با شما تماس بگیریم. برای مشاوره، از صفحه‌ی خدمات اقدام کنید.</p>
       </header>
       
@@ -70,17 +73,20 @@
           </label>
         </div>
         <h3 class="form__group">درباره‌ی شما</h3>
+        <label data-q="course" data-type="select" data-required="1">کدام کلاس؟
+          <select name="course"><option value="">انتخاب کنید</option><option>کلاس توسعه‌ی فردی</option><option>کلاس هوش مصنوعی</option><option>کلاس ادیت ویدیو با هوش مصنوعی و پریمیر</option><option>کلاس تجوید قرآن کریم</option><option>کلاس ابلاغ (سفیر قرآنی)</option><option>کلاس تندخوانی</option><option>کلاس تلاوت، صوت و لحن</option><option>کلاس زبان انگلیسی</option><option>کلاس زبان عربی</option><option>کلاس خودشناسی</option><option>کلاس فلسفه</option><option>کلاس دیگر</option></select>
+        </label>
         <label data-q="age" data-type="select" data-required="1">سن شما
           <select name="age"><option value="">انتخاب کنید</option><option>زیر ۱۸ سال</option><option>۱۸ تا ۲۵ سال</option><option>۲۶ تا ۳۵ سال</option><option>۳۶ تا ۴۵ سال</option><option>۴۶ تا ۶۰ سال</option><option>بالای ۶۰ سال</option></select>
         </label>
         <label data-q="edu" data-type="select" data-required="0">آخرین مدرک تحصیلی
           <select name="edu"><option value="">انتخاب کنید</option><option>زیر دیپلم</option><option>دیپلم</option><option>کاردانی</option><option>کارشناسی</option><option>کارشناسی ارشد</option><option>دکتری و بالاتر</option><option>حوزوی</option></select>
         </label>
-        <label data-q="level" data-type="select" data-required="1">سطح آشنایی با قرآن
+        <label data-q="level" data-type="select" data-required="0">سطح آشنایی با قرآن
           <select name="level"><option value="">انتخاب کنید</option><option>روخوانی بلد نیستم</option><option>روخوانی مبتدی</option><option>روان‌خوانی</option><option>تجوید پایه</option><option>بخش‌هایی از قرآن را حفظ هستم</option></select>
         </label>
         <h3 class="form__group">هدف، علایق و توانایی‌ها</h3>
-        <fieldset class="radios choices" data-q="goals" data-type="checks" data-required="1" data-max="3"><legend>هدف شما از شرکت در کلاس (تا ۳ مورد)</legend><label><input type="checkbox" name="goals" value="روخوانی و روان‌خوانی"> روخوانی و روان‌خوانی</label><label><input type="checkbox" name="goals" value="فهم معنی آیات"> فهم معنی آیات</label><label><input type="checkbox" name="goals" value="حفظ قرآن"> حفظ قرآن</label><label><input type="checkbox" name="goals" value="آرامش و رشد معنوی"> آرامش و رشد معنوی</label><label><input type="checkbox" name="goals" value="تلاوت و زیبایی صدا"> تلاوت و زیبایی صدا</label><label><input type="checkbox" name="goals" value="کاربرد قرآن در مشکلات زندگی"> کاربرد قرآن در مشکلات زندگی</label><label><input type="checkbox" name="goals" value="آموزش به دیگران"> آموزش به دیگران</label></fieldset>
+        <fieldset class="radios choices" data-q="goals" data-type="checks" data-required="0" data-max="3"><legend>هدف شما از شرکت در کلاس (تا ۳ مورد)</legend><label><input type="checkbox" name="goals" value="روخوانی و روان‌خوانی"> روخوانی و روان‌خوانی</label><label><input type="checkbox" name="goals" value="فهم معنی آیات"> فهم معنی آیات</label><label><input type="checkbox" name="goals" value="حفظ قرآن"> حفظ قرآن</label><label><input type="checkbox" name="goals" value="آرامش و رشد معنوی"> آرامش و رشد معنوی</label><label><input type="checkbox" name="goals" value="تلاوت و زیبایی صدا"> تلاوت و زیبایی صدا</label><label><input type="checkbox" name="goals" value="کاربرد قرآن در مشکلات زندگی"> کاربرد قرآن در مشکلات زندگی</label><label><input type="checkbox" name="goals" value="آموزش به دیگران"> آموزش به دیگران</label></fieldset>
         <fieldset class="radios choices" data-q="interests" data-type="checks" data-required="0" data-max="3"><legend>به چه چیزی علاقه دارید؟ (تا ۳ مورد)</legend><label><input type="checkbox" name="interests" value="تفسیر و مفاهیم"> تفسیر و مفاهیم</label><label><input type="checkbox" name="interests" value="داستان‌های قرآن"> داستان‌های قرآن</label><label><input type="checkbox" name="interests" value="قرآن‌تراپی و روانشناسی"> قرآن‌تراپی و روانشناسی</label><label><input type="checkbox" name="interests" value="تدبر در آیات"> تدبر در آیات</label><label><input type="checkbox" name="interests" value="صوت و تلاوت"> صوت و تلاوت</label><label><input type="checkbox" name="interests" value="شعر و ادبیات (مولانا)"> شعر و ادبیات (مولانا)</label></fieldset>
         <fieldset class="radios choices" data-q="talents" data-type="checks" data-required="0" data-max="3"><legend>توانایی‌های شما (تا ۳ مورد)</legend><label><input type="checkbox" name="talents" value="حافظه‌ی قوی"> حافظه‌ی قوی</label><label><input type="checkbox" name="talents" value="صدای خوب"> صدای خوب</label><label><input type="checkbox" name="talents" value="دقت و نظم"> دقت و نظم</label><label><input type="checkbox" name="talents" value="سخنوری و تدریس"> سخنوری و تدریس</label><label><input type="checkbox" name="talents" value="نویسندگی و تحلیل"> نویسندگی و تحلیل</label><label><input type="checkbox" name="talents" value="هنر و خلاقیت"> هنر و خلاقیت</label></fieldset>
         <h3 class="form__group">هماهنگی</h3>
@@ -105,27 +111,30 @@
   </div>
 
   <footer id="footer">
-    <section class="split contact">
-      <section class="alt">
-        <h3>آدرس</h3>
-        <p>مشهد، احمدآباد ۲۵، شیرین ۱</p>
-      </section>
-      <section>
-        <h3>تلفن</h3>
-        <p><a href="tel:09150900177" dir="ltr">0915 090 0177</a></p>
-      </section>
-      <section>
-        <h3>اینستاگرام</h3>
-        <p><a href="https://ig.me/m/dr.javadforooghi" target="_blank" rel="noopener" dir="ltr">@dr.javadforooghi</a></p>
-      </section>
-      <section>
-        <h3>شبکه‌ها</h3>
-        <ul class="icons alt">
-          <li><a href="https://www.instagram.com/dr.javadforooghi" class="icon brands alt fa-instagram" target="_blank" rel="noopener"><span class="label">اینستاگرام</span></a></li>
-          <li><a href="https://www.youtube.com/@JavadForooghi" class="icon brands alt fa-youtube" target="_blank" rel="noopener"><span class="label">یوتیوب</span></a></li>
+    <div class="foot">
+      <div>
+        <span class="accent">قرآنی که فقط خوانده نمی‌شود، بلکه در زندگی جاری است.</span>
+        <a href="tel:09150900177" class="button ghost" dir="ltr">0915 090 0177</a>
+      </div>
+      <div>
+        <h3>(بخش‌ها)</h3>
+        <ul><li><a href="about.html">معرفی</a></li><li><a href="services.html">خدمات</a></li><li><a href="videos.html">ویدیوها</a></li><li><a href="books.html">کتاب‌ها</a></li><li><a href="podcast.html">پادکست</a></li></ul>
+      </div>
+      <div>
+        <h3>(بیشتر)</h3>
+        <ul><li><a href="linkade.html">لینک‌کده</a></li><li><a href="producers.html">تولید ایرانی</a></li><li><a href="game.html">بازی</a></li><li><a href="test.html">تست علایق</a></li><li><a href="terms.html">قوانین</a></li></ul>
+      </div>
+      <div>
+        <h3>(ارتباط)</h3>
+        <ul class="places">
+          <li>مشهد <span data-clock=""></span></li>
+          <li><a href="https://www.instagram.com/dr.javadforooghi" target="_blank" rel="noopener">اینستاگرام</a> <span>dr.javadforooghi</span></li>
+          <li><a href="https://www.youtube.com/@JavadForooghi" target="_blank" rel="noopener">یوتیوب</a> <span>JavadForooghi</span></li>
+          <li>احمدآباد ۲۵، شیرین ۱ <span>آدرس</span></li>
         </ul>
-      </section>
-    </section>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true"><span>س‍</span><span>‍ف‍</span><span>‍ی‍</span><span>‍ر</span><span>ا</span><span>ن</span></div>
   </footer>
 
   <div id="copyright">
@@ -137,9 +146,25 @@
 <a class="float-call" href="tel:09150900177" aria-label="تماس با مؤسسه"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
 
 <script src="solar.js"></script>
-<script src="auth.js"></script>
 <script src="site.js"></script>
+<script>
+// کلاسی که در صفحه‌ی «کلاس‌ها» انتخاب شده بالای فرم نشان داده و در «کدام کلاس؟» انتخاب می‌شود
+(() => {
+  const name = new URLSearchParams(location.search).get('class');
+  const f = document.querySelector('form[data-kind="class"]');
+  if (!name || !f) return;
+  const sel = f.querySelector('select[name="course"]');
+  if (![...sel.options].some(o => o.value === name)) return;
+  sel.value = name;
+  const tag = document.createElement('div');
+  tag.className = 'class-pick';
+  tag.innerHTML = '<div><span>کلاس انتخابی</span><b></b></div><a href="classes.html">عوض کردن کلاس</a>';
+  tag.querySelector('b').textContent = name;
+  f.before(tag);
+})();
+</script>
 <script src="forms.js"></script>
 <script src="support.js"></script>
-</body>
+<script src="fx.js"></script>
+<script src="ui-click.js" defer></script></body>
 </html>

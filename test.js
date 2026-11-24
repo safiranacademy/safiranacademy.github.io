@@ -168,7 +168,7 @@
           <button type="button" class="button ghost-dark" data-act="again">انجام دوباره</button>
           <button type="button" class="button ghost-dark" data-act="clear">پاک کردن نتیجه از این مرورگر</button>
           <a class="button" href="services.html">مشاوره و خدمات</a>
-          <a class="button primary" href="signup.html">ثبت‌نام کلاس قرآن</a>
+          <a class="button primary" href="signup.html">ثبت‌نام کلاس‌ها</a>
         </div>
         <p class="tsub">این نتیجه برای آشنایی با خود است و جایگزین تشخیص متخصص نیست. خلاصه‌ی آن فقط روی همین دستگاه نگه داشته می‌شود تا اگر خواستید، هنگام ثبت‌نام یا درخواست مشاوره همراه فرم برای ما بفرستید.</p>
       </div>`;

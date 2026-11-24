@@ -6,7 +6,7 @@
 <title>پادکست | مؤسسه سفیران</title>
 <link rel="canonical" href="https://safiranacademy.github.io/podcast.html">
 <meta name="description" content="تلاوت و پادکست‌های دکتر جواد فروغی؛ شنیدن تلاوت‌های قرآن کریم و گفتارهای قرآنی مؤسسه سفیران.">
-<meta name="theme-color" content="#182413">
+<meta name="theme-color" content="#0f0f0f">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="مؤسسه سفیران">
@@ -21,13 +21,15 @@
 <link rel="stylesheet" href="assets/css/solar.css">
 <link rel="stylesheet" href="assets/css/support.css">
 <link rel="stylesheet" href="assets/css/player.css">
+<link rel="stylesheet" href="assets/css/elio.css">
+<link rel="stylesheet" href="assets/css/updraft-skin.css">
 </head>
 <body class="inner is-preload" data-page="podcast">
 
 <div id="wrapper" class="fade-in">
 
   <header class="site-head" id="header">
-    <a class="brand" href="index.html"><img src="img/logo-safiran-light.webp" alt="" width="46" height="42"><span>مؤسسه سفیران</span></a>
+    <a class="brand" href="index.html"><img src="img/logo-safiran-light.webp" alt="" width="46" height="42"><span>سفیران</span></a>
     <nav class="site-nav" id="site-nav" aria-label="منوی اصلی">
     <ul class="site-links">
       <li><a href="index.html">خانه</a></li>
@@ -48,59 +50,93 @@
       <li><a href="tel:09150900177" class="icon solid fa-phone"><span class="label">تماس</span></a></li>
     </ul>
     </nav>
-    <a class="head-cta" href="register.html">ثبت‌نام / ورود</a>
+    <span class="head-clock" data-clock="مشهد"></span>
+    <a class="head-cta" href="tel:09150900177">تماس با ما</a>
     <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="منو"><i class="icon solid fa-bars" aria-hidden="true"></i></button>
   </header>
 
 <div id="main">
-
-    <article class="post featured">
-          <header class="major">
-            <span class="date">شنیدنی‌ها</span>
-            <h1>تلاوت و پادکست</h1>
-          </header>
-          <img class="ico" src="img/i-headphone.webp" alt="" width="256" height="256" loading="lazy">
-          <p>روی هر عنوان بزنید تا همین‌جا پخش شود.</p>
-
-          <section class="audio-sec">
-            <h3>تلاوت‌های صوتی</h3>
-            <p class="audio-sec__sub">تلاوت‌های نوستالژی دکتر جواد فروغی</p>
-            <ol class="audio-list" data-list="recitations"></ol>
-          </section>
-
-          <section class="audio-sec">
-            <h3>پادکست‌های صوتی</h3>
-            <p class="audio-sec__sub">گفتگوها و صحبت‌های شنیدنی</p>
-            <ol class="audio-list" data-list="podcasts"></ol>
-          </section>
-
-          <p class="audio-note">حق انتشار این صداها برای دکتر جواد فروغی و مؤسسه سفیران محفوظ است. هرگونه کپی یا بازنشر آن‌ها بدون اجازه‌ی کتبی ممنوع است.</p>
-        </article>
-
-  </div>
+  <section class="listen" id="listen">
+    <header class="listen__head">
+      <div>
+        <span class="date">شنیدنی‌ها</span>
+        <h1 class="display" style="font-size:clamp(3rem,7.4vw,6.4rem);line-height:1;margin:14px 0 12px;color:#1e1e1e">تلاوت و پادکست</h1>
+        <p>روی هر عنوان بزنید تا همین‌جا و آنلاین پخش شود. پخش با رفتن به صفحه‌های دیگر هم از همان‌جا ادامه پیدا می‌کند.</p>
+      </div>
+      <div class="listen__tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-tab="recitations">تلاوت‌ها</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="podcasts">پادکست‌ها</button>
+      </div>
+    </header>
+    <div class="listen__grid">
+      <aside class="listen__now" aria-live="polite">
+        <small id="now-label">آماده‌ی پخش</small>
+        <h2 id="now-title">تلاوت‌های نوستالژی</h2>
+        <p id="now-album">دکتر جواد فروغی</p>
+        <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </aside>
+      <div>
+        <section class="audio-sec" data-sec="recitations">
+          <h3>تلاوت‌های صوتی</h3>
+          <p class="audio-sec__sub">تلاوت‌های نوستالژی دکتر جواد فروغی</p>
+          <ol class="audio-list" data-list="recitations"></ol>
+        </section>
+        <section class="audio-sec" data-sec="podcasts" hidden>
+          <h3>پادکست‌های صوتی</h3>
+          <p class="audio-sec__sub">گفتگوها و صحبت‌های شنیدنی</p>
+          <ol class="audio-list" data-list="podcasts"></ol>
+        </section>
+        <p class="listen__note">حق انتشار این صداها برای دکتر جواد فروغی و مؤسسه سفیران محفوظ است. هرگونه کپی یا بازنشر آن‌ها بدون اجازه‌ی کتبی ممنوع است.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+  // زبانه‌ها و کارت «در حال پخش»؛ پخش خودش با player.js است
+  (() => {
+    const tabs = document.querySelectorAll('.listen__tabs button');
+    tabs.forEach(b => b.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected', t === b));
+      document.querySelectorAll('.listen .audio-sec').forEach(s => s.hidden = s.dataset.sec !== b.dataset.tab);
+    }));
+    const box = document.getElementById('listen');
+    const sync = () => {
+      const a = document.querySelector('audio'), t = document.querySelector('.player__title');
+      const on = !!a && !a.paused;
+      box.classList.toggle('playing', on);
+      document.getElementById('now-label').textContent = on ? 'در حال پخش' : (a && a.currentTime ? 'مکث' : 'آماده‌ی پخش');
+      if (t && t.textContent.trim()) document.getElementById('now-title').textContent = t.textContent.trim();
+    };
+    ['play', 'pause', 'ended', 'loadedmetadata'].forEach(ev => document.addEventListener(ev, sync, true));
+    addEventListener('load', sync);
+  })();
+  </script>
+</div>
 
   <footer id="footer">
-    <section class="split contact">
-      <section class="alt">
-        <h3>آدرس</h3>
-        <p>مشهد، احمدآباد ۲۵، شیرین ۱</p>
-      </section>
-      <section>
-        <h3>تلفن</h3>
-        <p><a href="tel:09150900177" dir="ltr">0915 090 0177</a></p>
-      </section>
-      <section>
-        <h3>اینستاگرام</h3>
-        <p><a href="https://ig.me/m/dr.javadforooghi" target="_blank" rel="noopener" dir="ltr">@dr.javadforooghi</a></p>
-      </section>
-      <section>
-        <h3>شبکه‌ها</h3>
-        <ul class="icons alt">
-          <li><a href="https://www.instagram.com/dr.javadforooghi" class="icon brands alt fa-instagram" target="_blank" rel="noopener"><span class="label">اینستاگرام</span></a></li>
-          <li><a href="https://www.youtube.com/@JavadForooghi" class="icon brands alt fa-youtube" target="_blank" rel="noopener"><span class="label">یوتیوب</span></a></li>
+    <div class="foot">
+      <div>
+        <span class="accent">قرآنی که فقط خوانده نمی‌شود، بلکه در زندگی جاری است.</span>
+        <a href="tel:09150900177" class="button ghost" dir="ltr">0915 090 0177</a>
+      </div>
+      <div>
+        <h3>(بخش‌ها)</h3>
+        <ul><li><a href="about.html">معرفی</a></li><li><a href="services.html">خدمات</a></li><li><a href="videos.html">ویدیوها</a></li><li><a href="books.html">کتاب‌ها</a></li><li><a href="podcast.html">پادکست</a></li></ul>
+      </div>
+      <div>
+        <h3>(بیشتر)</h3>
+        <ul><li><a href="linkade.html">لینک‌کده</a></li><li><a href="producers.html">تولید ایرانی</a></li><li><a href="game.html">بازی</a></li><li><a href="test.html">تست علایق</a></li><li><a href="terms.html">قوانین</a></li></ul>
+      </div>
+      <div>
+        <h3>(ارتباط)</h3>
+        <ul class="places">
+          <li>مشهد <span data-clock=""></span></li>
+          <li><a href="https://www.instagram.com/dr.javadforooghi" target="_blank" rel="noopener">اینستاگرام</a> <span>dr.javadforooghi</span></li>
+          <li><a href="https://www.youtube.com/@JavadForooghi" target="_blank" rel="noopener">یوتیوب</a> <span>JavadForooghi</span></li>
+          <li>احمدآباد ۲۵، شیرین ۱ <span>آدرس</span></li>
         </ul>
-      </section>
-    </section>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true"><span>س‍</span><span>‍ف‍</span><span>‍ی‍</span><span>‍ر</span><span>ا</span><span>ن</span></div>
   </footer>
 
   <div id="copyright">
@@ -112,9 +148,9 @@
 <a class="float-call" href="tel:09150900177" aria-label="تماس با مؤسسه"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
 
 <script src="solar.js"></script>
-<script src="auth.js"></script>
 <script src="site.js"></script>
 <script src="support.js"></script>
 <script src="player.js"></script>
-</body>
+<script src="fx.js"></script>
+<script src="ui-click.js" defer></script></body>
 </html>

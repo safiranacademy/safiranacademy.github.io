@@ -1,0 +1,122 @@
+/* صفحه‌ی اول سفیران: فونت فارسی برای قالب Updraft + سر صفحه‌ی ویدیو و ورود به کتاب */
+@font-face{font-family:YekanBakh;src:url(../../fonts/YekanBakhFaNum-VF.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Display;src:url(../../fonts/Frutiger-Black-Cond.woff2) format("woff2");font-weight:700 900;font-display:swap}
+@font-face{font-family:Accent;src:url(../../fonts/Hilda.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{--font-app-heading:Display,YekanBakh,sans-serif;--font-app-sans:YekanBakh,Tahoma,sans-serif;--font-app-serif:Accent,YekanBakh,serif;--font-app-mono:YekanBakh,Tahoma,sans-serif;
+  --font-accent:Accent,YekanBakh,serif;--font-display:Display,YekanBakh,sans-serif;--font-ui:YekanBakh,Tahoma,sans-serif;--pad:clamp(16px,2.6vw,40px);--head-h:76px;--ink:#1e1e1e}
+html{background:#0d0c0b}
+body.book-site{background:var(--cream,#f2efe9)}
+/* فارسی: فاصله‌ی منفی حروف و حروف بزرگ اتصال را می‌شکند */
+body.book-site [dir=rtl],body.book-site [dir=rtl] *{letter-spacing:0!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.lbl{display:block;font-family:var(--font-ui);font-size:12.5px;font-weight:700;color:#9a6b3c}
+.display{font-family:var(--font-display);font-weight:900;line-height:.95}
+.accent{font-family:var(--font-accent)}
+.flight{z-index:20}
+/* ——— سر صفحه‌ی «پنجره» (الهام از قالب AERIVE): ویدیو با اسکرول جلو می‌رود ——— */
+.sf-preload{position:fixed;inset:0;z-index:9900;display:grid;place-items:center;background:var(--ink);transition:opacity .9s ease,visibility .9s}
+.sf-preload span{font-family:var(--font-accent);font-size:clamp(2rem,4vw,3rem);color:#d7c29e;opacity:0;animation:preIn 1.4s ease forwards .2s}
+@keyframes preIn{from{opacity:0;filter:blur(10px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
+.sf-preload.done{opacity:0!important;visibility:hidden!important;pointer-events:none}
+.flight{position:relative;height:360vh;background:var(--ink)}
+.flight__pin{position:sticky;top:0;height:100svh;overflow:hidden;perspective:1400px}
+.flight__glow{position:absolute;inset:-5%;background:radial-gradient(ellipse 60% 70% at 50% 55%,#3a2a1c 0%,#1d1610 38%,#0d0c0b 70%);will-change:transform}
+.flight__glow::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 2px,transparent 2px 5px);mix-blend-mode:overlay}
+.flight__win{position:absolute;left:50%;top:50%;width:var(--w,min(34vw,520px));height:var(--h,min(76vh,740px));transform:translate(-50%,-50%);z-index:1}
+.flight__tilt{position:absolute;inset:0;border-radius:var(--r,46% / 30%);overflow:hidden;background:#111;will-change:transform;
+  box-shadow:0 0 0 calc(var(--ring,1)*12px) #efe5d2,0 0 0 calc(var(--ring,1)*14px) #b89a68,0 0 0 calc(var(--ring,1)*34px) #e6d9c0,0 0 0 calc(var(--ring,1)*36px) rgba(140,110,70,.6),0 30px 90px calc(var(--ring,1)*20px) rgba(0,0,0,.55)}
+.flight__tilt canvas,.flight__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.flight__tilt::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 calc(var(--ring,1)*60px) rgba(0,0,0,.55);pointer-events:none}
+.flight__poster{transition:opacity .4s}
+.flight.is-live .flight__poster{opacity:0}
+.flight__mark{position:absolute;left:0;right:0;top:4.5%;text-align:center;font-family:var(--font-accent);font-size:clamp(1.4rem,2vw,2rem);color:rgba(243,236,224,.7);text-shadow:0 2px 20px rgba(0,0,0,.4);pointer-events:none}
+.flight__t{position:absolute;z-index:2;margin:0;font-family:var(--font-accent);font-weight:400;font-size:clamp(3rem,7.6vw,9rem);line-height:1.05;color:#f3ece0;text-shadow:0 4px 40px rgba(0,0,0,.35);pointer-events:none;will-change:transform,opacity}
+.flight__t .ln{display:block}
+.flight__t .ln--in{padding-inline-start:.6em}
+.flight__t--a{top:calc(var(--head-h) + 3vh);right:var(--pad)}
+.flight__t--b{bottom:9vh;left:var(--pad);text-align:left}
+.flight__t--b .ln--in{padding-inline-start:0;padding-left:.6em}
+.flight__t .w{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(35%);transition:opacity 1.5s cubic-bezier(.2,.8,.2,1),filter 1.5s,transform 1.5s cubic-bezier(.2,.8,.2,1)}
+.flight.is-in .flight__t .w{opacity:1;filter:none;transform:none}
+.flight__side{position:absolute;right:var(--pad);bottom:9vh;z-index:2;width:min(300px,26vw);color:#f3ece0;opacity:0;transform:translateY(24px);transition:opacity 1.2s ease .9s,transform 1.2s cubic-bezier(.2,.8,.2,1) .9s}
+.flight__side b{display:block;font-size:17px;font-weight:700;line-height:1.5}
+.flight__side i{display:block;width:32px;height:1px;background:#d7c29e;margin:1rem 0}
+.flight__side p{font-size:13px;line-height:1.75;color:rgba(243,236,224,.78);margin:0}
+.flight__hints{position:absolute;left:var(--pad);right:var(--pad);bottom:3vh;z-index:2;display:flex;justify-content:center;gap:4rem;font-family:var(--font-ui);font-size:11px;color:rgba(243,236,224,.7);opacity:0;transition:opacity 1.2s ease 1.05s}
+.flight.is-in .flight__side{opacity:1;transform:none}
+.flight.is-in .flight__hints{opacity:1}
+.flight__whisper{position:absolute;left:6vw;right:6vw;top:50%;z-index:3;margin:0;text-align:center;font-family:var(--font-accent);font-size:clamp(2.2rem,5vw,4.8rem);line-height:1.15;color:#f3ece0;text-shadow:0 4px 40px rgba(0,0,0,.6);opacity:0;transform:translateY(-50%);pointer-events:none}
+@media screen and (max-width:900px){
+  .flight{height:320vh}
+  .flight__win{--w:min(68vw,420px);--h:min(62svh,600px)}
+  .flight__t{font-size:clamp(2.4rem,11vw,4rem)}
+  .flight__t--a{top:calc(var(--head-h) + 1.5vh)}
+  .flight__t--b{bottom:18vh}
+  .flight__side{left:var(--pad);width:auto;bottom:4vh;text-align:center}
+  .flight__side i{margin-inline:auto}
+  .flight__side p{display:none}
+  .flight__hints{display:none}
+}
+
+:root{--paper:#f2efe9;--paper-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.paper-bg{background-color:var(--paper);background-image:radial-gradient(ellipse 70% 90% at 50% 50%,rgba(255,255,255,.35),rgba(120,90,50,.12) 100%),var(--paper-noise)}
+.flight__paper{position:absolute;inset:0;z-index:4;opacity:0;pointer-events:none;background-color:var(--paper);background-image:linear-gradient(90deg,rgba(80,55,25,0) 44%,rgba(80,55,25,.16) 49.4%,rgba(60,40,15,.28) 50%,rgba(80,55,25,.16) 50.6%,rgba(80,55,25,0) 56%),radial-gradient(ellipse 70% 90% at 50% 50%,rgba(255,255,255,.35),rgba(120,90,50,.12) 100%),var(--paper-noise);display:grid;place-items:center;text-align:center}
+.flight__page{display:grid;gap:.9rem;justify-items:center;padding:0 8vw;transform:translateY(30px);transition:transform .2s linear}
+.flight__page .display{font-size:clamp(3.6rem,10vw,9.5rem);color:#1d1813;line-height:1}
+.flight__page .accent{font-size:clamp(1.6rem,3vw,2.8rem);color:#8a5a33}
+.flight__page .lbl{color:#9a6b3c}
+.flight__down{margin-top:1.6rem;font-family:var(--font-ui);font-size:12px;color:#7a6c5a}
+/* ویدیو تمام‌صفحه، بدون قاب پنجره (درخواست امیرحسین) */
+.flight__win{left:0;top:0;width:100%!important;height:100%!important;transform:none}
+.flight__tilt{border-radius:0!important;box-shadow:none!important;transform:none!important}
+.flight__tilt::after{box-shadow:none;background:linear-gradient(90deg,rgba(243,236,224,.55) 0%,rgba(243,236,224,0) 38%),linear-gradient(0deg,rgba(243,236,224,.6) 0%,rgba(243,236,224,0) 30%)}
+.flight__tilt canvas{transform:scale(var(--zoom,1.04)) translate(var(--px,0),var(--py,0));will-change:transform}
+.flight__mark,.flight__glow{display:none}
+.flight__t{color:#1d1813;text-shadow:0 2px 30px rgba(243,236,224,.6)}
+.flight__t--a .ln--in{color:#8a5a33}
+.flight__t--b .ln:first-child{color:#8a5a33}
+.flight__side{color:#1d1813}
+.flight__side p{color:rgba(29,24,19,.75)}
+.flight__side i{background:#8a5a33}
+.flight__hints{color:rgba(29,24,19,.7)}
+
+/* کاغذ آخر ویدیو همان رنگ صفحه‌ی بعد است، تا بی‌درز وارد کتاب شویم */
+.flight__paper{background-image:radial-gradient(ellipse 70% 90% at 50% 50%,rgba(255,255,255,.35),rgba(120,90,50,.06) 100%),var(--paper-noise)!important}
+.flight__page .display{color:#1e1e1e}.flight__page .accent{color:#ff5c00}.flight__page .lbl{color:#5f5b54}
+/* نوار بالای قالب روی ویدیو هم دیده شود */
+header.fixed{z-index:9000!important}
+/* کلمه‌ی دوم تیترها با فونت Hilda: فونت فارسی ایتالیک ندارد، کمی کوچک‌تر تا هم‌وزن شود */
+body.book-site .italic{font-style:normal}
+body.book-site [dir=rtl] .font-serif.italic,body.book-site [dir=rtl] .blur-word.font-serif{font-size:.82em;line-height:1}
+/* «مسیر همراهی»: مثل قالب، هر بار یک قدم؛ متن یک طرف، تصویر طرف دیگر، خط زمان پایین */
+@media (min-width:1024px) and (min-height:640px){
+  #hunch-to-hit ol{position:relative;display:block;height:min(52vh,440px);margin-top:2.2rem}
+  #hunch-to-hit ol>li{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:4rem;border:0;background:none;border-radius:0;opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .8s cubic-bezier(.16,1,.3,1);pointer-events:none}
+  #hunch-to-hit ol>li.on{opacity:1;transform:none;pointer-events:auto}
+  #hunch-to-hit ol>li>div:first-child{order:2;height:100%;border-radius:1.75rem;overflow:hidden;box-shadow:0 30px 60px -30px rgb(30 30 30/.35);border:1px solid rgb(30 30 30/.1);background:var(--paper)}
+  #hunch-to-hit ol>li>div:first-child>div{height:100%}
+  #hunch-to-hit ol>li>div:last-child{order:1;border:0;padding:0;align-self:center}
+  #hunch-to-hit ol>li>div:last-child h3{font-size:3.4rem;margin-top:.4rem}
+  .hunch-line{position:relative;display:flex;justify-content:space-between;margin:2.4rem auto 0;max-width:900px}
+  .hunch-line::before,.hunch-line i{content:"";position:absolute;top:6px;right:6px;left:6px;height:2px;background:rgb(30 30 30/.15)}
+  .hunch-line i{left:auto;background:var(--ember,#ff5c00);transition:width .5s ease}
+  .hunch-line b{position:relative;z-index:1;display:grid;justify-items:center;gap:.4rem;font-weight:400;font-size:11px;color:var(--stone,#5f5b54)}
+  .hunch-line b::before{content:"";width:13px;height:13px;border-radius:50%;background:var(--cream,#f2efe9);border:1.5px solid rgb(30 30 30/.3);transition:background .3s,border-color .3s}
+  .hunch-line b.on::before{background:var(--ember,#ff5c00);border-color:var(--ember,#ff5c00)}
+  .hunch-line b.on{color:var(--ink,#1e1e1e);font-weight:700}
+}
+.hunch-line{display:none}
+@media (min-width:1024px) and (min-height:640px){.hunch-line{display:flex}}
+.flight{direction:rtl}.sf-preload{direction:rtl}
+/* دیوار کارت‌های بالای صفحه‌ی اول برداشته شد (امیرحسین 2026-11-23: شلوغ و بی‌ربط)؛ فقط تیتر و دکمه‌ی آن بخش می‌ماند */
+#hero > div > .grid{display:none!important}
+#hero > div > .relative.z-10{position:relative!important;inset:auto!important;display:flex;justify-content:flex-end;padding-bottom:clamp(64px,8vw,112px)}
+
+/* عکس دکتر فروغی گوشه‌ی چپ صفحه‌ی اول کتاب، کم‌رنگ */
+.flight__paper{overflow:hidden}
+.flight__dr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.16;pointer-events:none;user-select:none}
+@media (max-width:900px){.flight__dr{opacity:.13}}
+.flight__page{position:relative;z-index:1}
+/* فاصله‌ی خالی بین «باور ما» و «خدمات سفیران» کم شد (2026-11-24) */
+#manifesto{padding-bottom:2rem!important}
+#forecast-board{padding-top:2.5rem!important}

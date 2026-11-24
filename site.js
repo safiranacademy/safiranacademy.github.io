@@ -15,26 +15,19 @@ const sendForm = async (f, data, tell, success) => {
   button.disabled = true;
   tell('در حال ارسال…');
   try {
-    const token = await SafiranAuth.token();
     const r = await fetch(CONFIG.endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
     if (r.status === 429) {
       tell('درخواست‌های زیادی فرستاده شده است. لطفاً کمی بعد دوباره امتحان کنید.', true);
-    } else if (r.status === 401) {
-      await SafiranAuth.signOut();
-      tell('برای ارسال فرم باید دوباره وارد حساب خود شوید. در حال انتقال به صفحه‌ی ورود…', true);
-      location.href = `login.html?next=${encodeURIComponent(location.pathname.split('/').pop() || 'index.html')}`;
-      return false;
     } else if (r.status === 403) {
-      tell('این حساب مسدود شده است. برای پیگیری با مؤسسه تماس بگیرید.', true);
+      tell('ارسال این فرم ممکن نشد. لطفاً با مؤسسه تماس بگیرید.', true);
     } else if (!r.ok) {
       throw new Error(r.status);
     } else {
       f.reset();
-      SafiranAuth.prefill(f);
       tell(success);
       sent = true;
     }

@@ -1,0 +1,6 @@
+_build/
+_updraft/
+images/
+_test_updraft.html
+index.elio.html
+__pycache__/
